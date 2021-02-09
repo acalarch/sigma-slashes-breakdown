@@ -1,0 +1,47 @@
+This is how backslashes with wildcards should behave in SIGMA (https://github.com/Neo23x0/sigma/)
+
+
+---No Startswith/Endswith/Contains---
+Input -> What should match
+\ -> \
+\\ -> \
+\\\ -> \\
+\\\\\ -> \\\
+\* -> {asterisk}
+\\* -> \{multi-wildcard}
+\\\* -> \{asterisk}
+\\\\* -> \\{multi-wildcard}
+\\\\\* -> \\{asterisk}
+\? -> {question ark}
+\\? -> \{single-wildcard}
+\\\? -> \{question mark}
+\\\\? -> \\{single-wildcard}
+\\\\\? -> \\{question mark}
+\{any other symbol} -> \{that symbol}
+\\{any other symbol} -> \{that symbol}
+\\\{any other symbol} -> \\{that symbol}
+\\\\{any other symbol} -> \\{that symbol}
+\\\\\{any other symbol} -> \\\{that symbol}
+
+---startswith---
+Input -> what should match
+\ -> \{multi-wildcard}
+\\ -> \{multi-wildcard}
+\\\ -> \\{multi-wildcard}
+\\\\ -> \\{multi-wildcard}
+\\\\\ -> \\\{multi-wildcard}
+\* -> {asterisk}{multi-wildcard}
+\\* -> \{multi-wildcard} 'we would be combining the author's unnecessary multi-wildcard with the multi-wildcard appended by startswith
+\\\* -> \\{asterisk}{multi-wildcard}
+\\\\* -> \\{multi-wildcard} 'we would be combining the author's unnecessary multi-wildcard with the multi-wildcard appended by startswith
+\\\\\* -> \\{asterisk}{multi-wildcard}
+\? -> {question mark}{multi-wildcard}
+\\? -> \{multi-wildcard} 'we would be combining the author's unnecessary single wildcard with the multi-wildcard appended by startswith
+\\\? -> \\{question mark}{multi-wildcard}
+\\\\? -> \\{multi-wildcard} 'we would be combining the author's unnecessary single wildcard with the multi-wildcard appended by startswith
+\\\\\? -> \\{question mark}{multi-wildcard}
+\{any other symbol} -> \{that symbol}{multi-wildcard}
+\\{any other symbol} -> \{that symbol}{multi-wildcard}
+\\\{any other symbol} -> \\{that symbol}{multi-wildcard}
+\\\\{any other symbol} -> \\{that symbol}{multi-wildcard}
+\\\\\{any other symbol} -> \\\{that symbol}{multi-wildcard}
