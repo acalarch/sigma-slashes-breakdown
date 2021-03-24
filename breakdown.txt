@@ -2,26 +2,30 @@ This is how backslashes with wildcards should behave in SIGMA (https://github.co
 
 
 ---No Startswith/Endswith/Contains---
-Input -> What should match
-\ -> \
-\\ -> \
-\\\ -> \\
-\\\\\ -> \\\
-\* -> {asterisk}
-\\* -> \{multi-wildcard}
-\\\* -> \{asterisk}
-\\\\* -> \\{multi-wildcard}
-\\\\\* -> \\{asterisk}
-\? -> {question ark}
-\\? -> \{single-wildcard}
-\\\? -> \{question mark}
-\\\\? -> \\{single-wildcard}
-\\\\\? -> \\{question mark}
-\{any other symbol} -> \{that symbol}
-\\{any other symbol} -> \{that symbol}
-\\\{any other symbol} -> \\{that symbol}
-\\\\{any other symbol} -> \\{that symbol}
-\\\\\{any other symbol} -> \\\{that symbol}
+Input -> What should match -> Elastic Search Lucene Equivalent
+\ -> \ -> slashes.keyword:\\
+\\ -> \ -> slashes.keyword:\\
+\\\ -> \\ -> slashes.keyword:\\\\
+\\\\ -> \\ -> slashes.keyword:\\\\
+\\\\\ -> \\\ -> slashes.keyword:\\\\\\
+* -> {multi-wildcard} -> slashes.keyword:*
+\* -> {asterisk} -> slashes.keyword:\*
+\\* -> \{multi-wildcard} -> slashes.keyword:\\*
+\\\* -> \{asterisk} -> slashes.keyword:\\\*
+\\\\* -> \\{multi-wildcard} -> slashes.keyword:\\\\*
+\\\\\* -> \\{asterisk} -> slashes.keyword:\\\*
+? -> {single-wildcard} -> slashes.keyword:?
+\? -> {question mark} -> slashes.keyword:\?
+\\? -> \{single-wildcard} -> slashes.keyword:\\?
+\\\? -> \{question mark} -> slashes.keyword:\\\?
+\\\\? -> \\{single-wildcard} -> slashes.keyword:\\\\?
+\\\\\? -> \\{question mark} -> slashes.keyword:\\\\\?
+{any other symbol} -> {that symbol} -> slashes.keyword:% (if the percent symbol is that other symbol) 
+\{any other symbol} -> \{that symbol} -> slashes.keyword:\\%
+\\{any other symbol} -> \{that symbol} ->  slashes.keyword:\\%
+\\\{any other symbol} -> \\{that symbol} ->  slashes.keyword:\\\\%
+\\\\{any other symbol} -> \\{that symbol} ->  slashes.keyword:\\\\%
+\\\\\{any other symbol} -> \\\{that symbol} ->  slashes.keyword:\\\\\\%
 
 ---startswith---
 Input -> what should match
