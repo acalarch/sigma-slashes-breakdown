@@ -2,30 +2,30 @@ This is how backslashes with wildcards should behave in SIGMA (https://github.co
 
 
 ---No Startswith/Endswith/Contains---
-Input -> What should match -> Elastic Search Lucene Equivalent
-\ -> \ -> slashes.keyword:\\
-\\ -> \ -> slashes.keyword:\\
-\\\ -> \\ -> slashes.keyword:\\\\
-\\\\ -> \\ -> slashes.keyword:\\\\
-\\\\\ -> \\\ -> slashes.keyword:\\\\\\
-* -> {multi-wildcard} -> slashes.keyword:*
-\* -> {asterisk} -> slashes.keyword:\*
-\\* -> \{multi-wildcard} -> slashes.keyword:\\*
-\\\* -> \{asterisk} -> slashes.keyword:\\\*
-\\\\* -> \\{multi-wildcard} -> slashes.keyword:\\\\*
-\\\\\* -> \\{asterisk} -> slashes.keyword:\\\*
-? -> {single-wildcard} -> slashes.keyword:?
-\? -> {question mark} -> slashes.keyword:\?
-\\? -> \{single-wildcard} -> slashes.keyword:\\?
-\\\? -> \{question mark} -> slashes.keyword:\\\?
-\\\\? -> \\{single-wildcard} -> slashes.keyword:\\\\?
-\\\\\? -> \\{question mark} -> slashes.keyword:\\\\\?
-{any other symbol} -> {that symbol} -> slashes.keyword:% (if the percent symbol is that other symbol) 
-\{any other symbol} -> \{that symbol} -> slashes.keyword:\\%
-\\{any other symbol} -> \{that symbol} ->  slashes.keyword:\\%
-\\\{any other symbol} -> \\{that symbol} ->  slashes.keyword:\\\\%
-\\\\{any other symbol} -> \\{that symbol} ->  slashes.keyword:\\\\%
-\\\\\{any other symbol} -> \\\{that symbol} ->  slashes.keyword:\\\\\\%
+SIGMA Input -> What should match -> Elastic Search Lucene Equivalent
+field:\ -> \ -> field.keyword:\\
+field:\\ -> \ -> field.keyword:\\
+field:\\\ -> \\ -> field.keyword:\\\\
+field:\\\\ -> \\ -> field.keyword:\\\\
+field:\\\\\ -> \\\ -> field.keyword:\\\\\\
+field:* -> {multi-wildcard} -> field.keyword:*
+field:\* -> {asterisk} -> field.keyword:\*
+field:\\* -> \{multi-wildcard} -> field.keyword:\\*
+field:\\\* -> \{asterisk} -> field.keyword:\\\*
+field:\\\\* -> \\{multi-wildcard} -> field.keyword:\\\\*
+field:\\\\\* -> \\{asterisk} -> field.keyword:\\\*
+field:? -> {single-wildcard} -> field.keyword:?
+field:\? -> {question mark} -> field.keyword:\?
+field:\\? -> \{single-wildcard} -> field.keyword:\\?
+field:\\\? -> \{question mark} -> field.keyword:\\\?
+field:\\\\? -> \\{single-wildcard} -> field.keyword:\\\\?
+field:\\\\\? -> \\{question mark} -> field.keyword:\\\\\?
+field:{any other symbol} -> {that symbol} -> field.keyword:% 
+field:\{any other symbol} -> \{that symbol} -> field.keyword:\\%
+field:\\{any other symbol} -> \{that symbol} ->  field.keyword:\\%
+field:\\\{any other symbol} -> \\{that symbol} ->  field.keyword:\\\\%
+field:\\\\{any other symbol} -> \\{that symbol} ->  field.keyword:\\\\%
+field:\\\\\{any other symbol} -> \\\{that symbol} ->  field.keyword:\\\\\\%
 
 ---startswith---
 Input -> what should match
@@ -53,53 +53,53 @@ Input -> what should match
 
 Create test data in elasticsearch
 POST _bulk
-{"index" : { "_index" : "slashes"}}
-{"value":"?"}
-{"index" : { "_index" : "slashes"}}
-{"value":"\\?"}
-{"index" : { "_index" : "slashes"}}
-{"value":"\\\\?"}
-{"index" : { "_index" : "slashes"}}
-{"value":"\\\\\\?"}
-{"index" : { "_index" : "slashes"}}
-{"value":"\\\\\\\\?"}
-{"index" : { "_index" : "slashes"}}
-{"value":"\\\\\\\\\\?"}
-{"index" : { "_index" : "slashes"}}
-{"value":"*"}
-{"index" : { "_index" : "slashes"}}
-{"value":"\\*"}
-{"index" : { "_index" : "slashes"}}
-{"value":"\\\\*"}
-{"index" : { "_index" : "slashes"}}
-{"value":"\\\\\\*"}
-{"index" : { "_index" : "slashes"}}
-{"value":"\\\\\\\\*"}
-{"index" : { "_index" : "slashes"}}
-{"value":"\\\\\\\\\\*"}
-{"index" : { "_index" : "slashes"}}
-{"value":"thisisastring"}
-{"index" : { "_index" : "slashes"}}
-{"value":"\\thisisastring"}
-{"index" : { "_index" : "slashes"}}
-{"value":"\\\\thisisastring"}
-{"index" : { "_index" : "slashes"}}
-{"value":"\\\\\\thisisastring"}
-{"index" : { "_index" : "slashes"}}
-{"value":"\\\\\\\\thisisastring"}
-{"index" : { "_index" : "slashes"}}
-{"value":"\\\\\\\\\\thisisastring"}
-{"index" : { "_index" : "slashes"}}
-{"value":"%"}
-{"index" : { "_index" : "slashes"}}
-{"value":"\\%"}
-{"index" : { "_index" : "slashes"}}
-{"value":"\\\\%"}
-{"index" : { "_index" : "slashes"}}
-{"value":"\\\\\\%"}
-{"index" : { "_index" : "slashes"}}
-{"value":"\\\\\\\\%"}
-{"index" : { "_index" : "slashes"}}
-{"value":"\\\\\\\\\\%"}
-{"index" : { "_index" : "slashes"}}
-{"value":"\\\\\\\\\\\\%"}
+{"index" : { "_index" : "slashmania"}}
+{"field":"?"}
+{"index" : { "_index" : "slashmania"}}
+{"field":"\\?"}
+{"index" : { "_index" : "slashmania"}}
+{"field":"\\\\?"}
+{"index" : { "_index" : "slashmania"}}
+{"field":"\\\\\\?"}
+{"index" : { "_index" : "slashmania"}}
+{"field":"\\\\\\\\?"}
+{"index" : { "_index" : "slashmania"}}
+{"field":"\\\\\\\\\\?"}
+{"index" : { "_index" : "slashmania"}}
+{"field":"*"}
+{"index" : { "_index" : "slashmania"}}
+{"field":"\\*"}
+{"index" : { "_index" : "slashmania"}}
+{"field":"\\\\*"}
+{"index" : { "_index" : "slashmania"}}
+{"field":"\\\\\\*"}
+{"index" : { "_index" : "slashmania"}}
+{"field":"\\\\\\\\*"}
+{"index" : { "_index" : "slashmania"}}
+{"field":"\\\\\\\\\\*"}
+{"index" : { "_index" : "slashmania"}}
+{"field":"thisisastring"}
+{"index" : { "_index" : "slashmania"}}
+{"field":"\\thisisastring"}
+{"index" : { "_index" : "slashmania"}}
+{"field":"\\\\thisisastring"}
+{"index" : { "_index" : "slashmania"}}
+{"field":"\\\\\\thisisastring"}
+{"index" : { "_index" : "slashmania"}}
+{"field":"\\\\\\\\thisisastring"}
+{"index" : { "_index" : "slashmania"}}
+{"field":"\\\\\\\\\\thisisastring"}
+{"index" : { "_index" : "slashmania"}}
+{"field":"%"}
+{"index" : { "_index" : "slashmania"}}
+{"field":"\\%"}
+{"index" : { "_index" : "slashmania"}}
+{"field":"\\\\%"}
+{"index" : { "_index" : "slashmania"}}
+{"field":"\\\\\\%"}
+{"index" : { "_index" : "slashmania"}}
+{"field":"\\\\\\\\%"}
+{"index" : { "_index" : "slashmania"}}
+{"field":"\\\\\\\\\\%"}
+{"index" : { "_index" : "slashmania"}}
+{"field":"\\\\\\\\\\\\%"}
