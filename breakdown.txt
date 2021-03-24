@@ -49,3 +49,57 @@ Input -> what should match
 \\\{any other symbol} -> \\{that symbol}{multi-wildcard}
 \\\\{any other symbol} -> \\{that symbol}{multi-wildcard}
 \\\\\{any other symbol} -> \\\{that symbol}{multi-wildcard}
+
+
+Create test data in elasticsearch
+POST _bulk
+{"index" : { "_index" : "slashes"}}
+{"value":"?"}
+{"index" : { "_index" : "slashes"}}
+{"value":"\\?"}
+{"index" : { "_index" : "slashes"}}
+{"value":"\\\\?"}
+{"index" : { "_index" : "slashes"}}
+{"value":"\\\\\\?"}
+{"index" : { "_index" : "slashes"}}
+{"value":"\\\\\\\\?"}
+{"index" : { "_index" : "slashes"}}
+{"value":"\\\\\\\\\\?"}
+{"index" : { "_index" : "slashes"}}
+{"value":"*"}
+{"index" : { "_index" : "slashes"}}
+{"value":"\\*"}
+{"index" : { "_index" : "slashes"}}
+{"value":"\\\\*"}
+{"index" : { "_index" : "slashes"}}
+{"value":"\\\\\\*"}
+{"index" : { "_index" : "slashes"}}
+{"value":"\\\\\\\\*"}
+{"index" : { "_index" : "slashes"}}
+{"value":"\\\\\\\\\\*"}
+{"index" : { "_index" : "slashes"}}
+{"value":"thisisastring"}
+{"index" : { "_index" : "slashes"}}
+{"value":"\\thisisastring"}
+{"index" : { "_index" : "slashes"}}
+{"value":"\\\\thisisastring"}
+{"index" : { "_index" : "slashes"}}
+{"value":"\\\\\\thisisastring"}
+{"index" : { "_index" : "slashes"}}
+{"value":"\\\\\\\\thisisastring"}
+{"index" : { "_index" : "slashes"}}
+{"value":"\\\\\\\\\\thisisastring"}
+{"index" : { "_index" : "slashes"}}
+{"value":"%"}
+{"index" : { "_index" : "slashes"}}
+{"value":"\\%"}
+{"index" : { "_index" : "slashes"}}
+{"value":"\\\\%"}
+{"index" : { "_index" : "slashes"}}
+{"value":"\\\\\\%"}
+{"index" : { "_index" : "slashes"}}
+{"value":"\\\\\\\\%"}
+{"index" : { "_index" : "slashes"}}
+{"value":"\\\\\\\\\\%"}
+{"index" : { "_index" : "slashes"}}
+{"value":"\\\\\\\\\\\\%"}
